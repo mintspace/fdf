@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 09:57:14 by metalium          #+#    #+#             */
-/*   Updated: 2019/10/02 18:46:51 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/03 13:03:36 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ typedef struct s_fgroup
 
 	int		map_x;
 	int		map_y;
-	
+
 	char	**map;
 	char	**map_color;
 }			t_fgroup;
 
 float		ft_abs(float i);
 void		bres_line(float x0,  float y0, float x1, float y1, t_fgroup *fgroup);
-int			deal_key(int key, void *data);
+int			deal_key(int key, void *data, t_fgroup *fgroup);
+t_fgroup	get_land(char **land, t_fgroup *fgroup);
 
 #endif
