@@ -6,13 +6,13 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 17:53:56 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/10/02 12:54:58 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/02 17:36:21 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void bres_line(float x0,  float y0, float x1, float y1)
+void bres_line(float x0,  float y0, float x1, float y1, t_fgroup *fgroup)
 {
     float d_x;
     float d_y;
@@ -27,8 +27,8 @@ void bres_line(float x0,  float y0, float x1, float y1)
     
     while ((int)x0 != (int)x1 || (int)y0 != (int)y1)
     {  
-        mlx_pixel_put(mlx_ptr, win_ptr, x0, y0, 0x34e8eb);
+        mlx_pixel_put(fgroup->mlx_ptr, fgroup->win_ptr, x0, y0, 0x34e8eb);
         x0 += step_x;
-        y0 += step_y;       
+        y0 += step_y;      
     }
 }

@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 09:54:50 by metalium          #+#    #+#             */
-/*   Updated: 2019/10/01 19:44:07 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/02 18:42:52 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,22 @@ int	deal_key(int key, void *data)
 	return (0);
 }
 
-int		main(void)
+int		main(int argc, char **argv)
 {
-	
+	int			fd;
+	t_fgroup	*fgroup;
 
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1200, 1200, "mlx 42");
-	// mlx_pixel_put(mlx_ptr, win_ptr, 200, 200, 0x34e8eb);
-	bres_line(10,300, 300,300);
-	mlx_key_hook(win_ptr, deal_key, NULL); // NULL -> char map
-	mlx_loop(mlx_ptr);
+	fd = 0;
+	fgroup = (t_fgroup*)malloc(sizeof(t_fgroup));
+		
+	get_land(); // read file
+
+	fgroup->mlx_ptr = mlx_init();
+	fgroup->win_ptr = mlx_new_window(fgroup->mlx_ptr, 800, 800, "mlx 42");
+	
+	bres_line(10, 30, 500, 540, fgroup);
+	mlx_key_hook(fgroup->win_ptr, deal_key, NULL); // NULL -> char map
+	mlx_loop(fgroup->mlx_ptr);
 	
 	return (0);
 }
