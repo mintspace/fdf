@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 17:38:30 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/10/04 15:46:41 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/04 16:20:25 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ void	land_alocate(t_fgroup *fgroup)
 void	land_fill_str(int land_counter, char *str, t_fgroup *fgroup)
 {
 	int i;
+	char **nums;
 
 	i = 0;
+	nums = ft_strsplit(str, ' ');
 	while (i < fgroup->land_width)
 	{
-		fgroup->land[land_counter][i] = str[i];
+		fgroup->land[land_counter][i] = ft_atoi(nums[i]);
 		i++;
 	}
 }
@@ -68,7 +70,6 @@ void	land_fill_str(int land_counter, char *str, t_fgroup *fgroup)
 void	land_fill(char *land, t_fgroup *fgroup)
 {
 	int		fd;
-	int		i;
 	int		land_counter;
 	char	*str;
 
@@ -77,8 +78,8 @@ void	land_fill(char *land, t_fgroup *fgroup)
 	while (get_next_line(fd, &str) > 0 )
 	{
 		land_fill_str(land_counter, str, fgroup);
+		free(str);
 		land_counter++;
-		i++;
 	}
 	free(str);
 	close(fd);
