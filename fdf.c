@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 09:54:50 by metalium          #+#    #+#             */
-/*   Updated: 2019/10/03 20:57:23 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/04 09:23:46 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,12 @@ int		main(int argc, char **argv)
 
 	// ---------------------------
 
-	ft_printf("%d\n", fgroup->land_height);
+	int i;
+
+	i = 0;
+	ft_printf("hight : %d\n", fgroup->land_height);
 	ft_printf("width : %d\n", fgroup->land_width);
+	// while ()
 
 	return (0);
 }

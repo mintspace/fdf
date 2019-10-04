@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 09:57:14 by metalium          #+#    #+#             */
-/*   Updated: 2019/10/03 20:58:34 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/04 02:28:21 by metalium         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ typedef struct s_fgroup
 	int		map_x;
 	int		map_y;
 
-	char	**land;
-	char	**land_color;
+	int		**land; // int 2d array
 
 	int		land_height;
 	int		land_width;
