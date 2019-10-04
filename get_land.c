@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 17:38:30 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/10/04 14:34:52 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/04 15:46:41 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	land_alocate(t_fgroup *fgroup)
 {
 	int		i;
 
+	i = 0;
 	fgroup->land = (int **)malloc(sizeof(int *) * fgroup->land_height);
 	while (i < fgroup->land_height)
 	{
