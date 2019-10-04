@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 17:38:30 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/10/04 16:20:25 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/04 16:23:53 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,3 +93,5 @@ int		read_file(char *file_name, t_fgroup *fgroup)
 	land_fill(file_name, fgroup);
 	return (0);
 }
+
+//xxx
