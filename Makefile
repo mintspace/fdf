@@ -6,7 +6,7 @@
 #    By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/01 09:54:57 by metalium          #+#    #+#              #
-#    Updated: 2019/10/03 18:43:44 by dbubnov          ###   ########.fr        #
+#    Updated: 2019/10/04 12:34:40 by dbubnov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,3 +23,6 @@ push:
 	git status
 	git commit -m fdf
 	git push
+
+debug:
+	gcc -g *.c libft/libft.a minilibx_macos/libmlx.a $(FRAEMWORKS)

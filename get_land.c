@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_land.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 17:38:30 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/10/04 09:23:39 by metalium         ###   ########.fr       */
+/*   Updated: 2019/10/04 14:34:52 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,40 @@ void	land_alocate(t_fgroup *fgroup)
 	}
 }
 
-void	land_fill_str(char *str, t_fgroup *fgroup)
+void	land_fill_str(int land_counter, char *str, t_fgroup *fgroup)
 {
+	int i;
 
+	i = 0;
+	while (i < fgroup->land_width)
+	{
+		fgroup->land[land_counter][i] = str[i];
+		i++;
+	}
 }
 
 void	land_fill(char *land, t_fgroup *fgroup)
 {
-	int		fd
+	int		fd;
+	int		i;
+	int		land_counter;
 	char	*str;
 
-	while ()
-
-
+	fd = open(land, O_RDONLY);
+	land_counter = 0;
+	while (get_next_line(fd, &str) > 0 )
+	{
+		land_fill_str(land_counter, str, fgroup);
+		land_counter++;
+		i++;
+	}
+	free(str);
+	close(fd);
 }
-
-// Get if done
 
 int		read_file(char *file_name, t_fgroup *fgroup)
 {
-	get_land_height(file_name, fgroup); // read file
+	get_land_height(file_name, fgroup);
 	get_land_width(file_name, fgroup);
 	land_alocate(fgroup);
 	land_fill(file_name, fgroup);
