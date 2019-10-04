@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 09:54:50 by metalium          #+#    #+#             */
-/*   Updated: 2019/10/03 13:21:16 by metalium         ###   ########.fr       */
+/*   Updated: 2019/10/03 20:57:23 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,21 @@ int		main(int argc, char **argv)
 
 	fgroup = (t_fgroup*)malloc(sizeof(t_fgroup));
 
-	fgroup = get_land(**argv, fgroup); // read file
+	read_file(argv[1], fgroup);
 
-	fgroup->mlx_ptr = mlx_init();
-	fgroup->win_ptr = mlx_new_window(fgroup->mlx_ptr, 800, 800, "mlx 42");
+	// ---------------------------
 
-	bres_line(10, 30, 500, 540, fgroup);
-	mlx_key_hook(fgroup->win_ptr, deal_key, NULL); // NULL -> char map
-	mlx_loop(fgroup->mlx_ptr);
+	// fgroup->mlx_ptr = mlx_init();
+	// fgroup->win_ptr = mlx_new_window(fgroup->mlx_ptr, 800, 800, "mlx 42");
+
+	// bres_line(10, 30, 500, 540, fgroup);
+	// mlx_key_hook(fgroup->win_ptr, deal_key, NULL); // NULL -> char map
+	// mlx_loop(fgroup->mlx_ptr);
+
+	// ---------------------------
+
+	ft_printf("%d\n", fgroup->land_height);
+	ft_printf("width : %d\n", fgroup->land_width);
 
 	return (0);
 }
