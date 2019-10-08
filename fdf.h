@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: metalium <metalium@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 09:57:14 by metalium          #+#    #+#             */
-/*   Updated: 2019/10/04 02:28:21 by metalium         ###   ########.fr       */
+/*   Updated: 2019/10/07 17:40:02 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,32 @@
 
 typedef struct s_fgroup
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-
+	int		zoom;
+	int		color;
 	int		map_x;
 	int		map_y;
-
-	int		**land; // int 2d array
-
-	int		land_height;
+	int		**land;
+	int		move_x;
+	int		move_y;
+	int		scale_z;
+	void	*mlx_ptr;
+	void	*win_ptr;
 	int		land_width;
+	int		land_height;
+	int		perspective;
+	float	rot;
 
 }			t_fgroup;
 
 float		ft_abs(float i);
-void		bres_line(float x0,  float y0, float x1, float y1, t_fgroup *fgroup);
-int			deal_key(int key, void *data, t_fgroup *fgroup);
+void		render(t_fgroup *fgroup);
+void		init_fgroup(t_fgroup *fgroup);
+int			deal_key(int key, t_fgroup *fgroup);
 void		get_land_height(char *land, t_fgroup *fgroup);
 void		get_land_width(char *land, t_fgroup *fgroup);
 int			read_file(char *file_name, t_fgroup *fgroup);
+void		isometric(float *x, float *y, int z, float rot);
+void		bres_line(float x0,  float y0, float x1, float y1, t_fgroup *fgroup);
+void		zoom_scale(float *x0, float *y0, float *x1, float *y1, t_fgroup *fgroup);
 
 #endif
