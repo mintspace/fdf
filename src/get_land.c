@@ -6,19 +6,20 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 17:38:30 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/10/04 16:23:53 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/07 18:54:04 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	get_land_height(char *land, t_fgroup *fgroup) // land = "42.filler"
+void	get_land_height(char *land, t_fgroup *fgroup)
 {
 	int		fd;
 	char	*str;
 
 	fgroup->land_height = 0;
 	fd = open(land, O_RDONLY);
+	ft_error_fd(fd);
 	while (get_next_line(fd, &str) > 0)
 	{
 		fgroup->land_height++;
@@ -55,8 +56,8 @@ void	land_alocate(t_fgroup *fgroup)
 
 void	land_fill_str(int land_counter, char *str, t_fgroup *fgroup)
 {
-	int i;
-	char **nums;
+	int		i;
+	char	**nums;
 
 	i = 0;
 	nums = ft_strsplit(str, ' ');
@@ -75,7 +76,7 @@ void	land_fill(char *land, t_fgroup *fgroup)
 
 	fd = open(land, O_RDONLY);
 	land_counter = 0;
-	while (get_next_line(fd, &str) > 0 )
+	while (get_next_line(fd, &str) > 0)
 	{
 		land_fill_str(land_counter, str, fgroup);
 		free(str);
@@ -84,14 +85,3 @@ void	land_fill(char *land, t_fgroup *fgroup)
 	free(str);
 	close(fd);
 }
-
-int		read_file(char *file_name, t_fgroup *fgroup)
-{
-	get_land_height(file_name, fgroup);
-	get_land_width(file_name, fgroup);
-	land_alocate(fgroup);
-	land_fill(file_name, fgroup);
-	return (0);
-}
-
-//xxx

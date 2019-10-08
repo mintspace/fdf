@@ -6,23 +6,27 @@
 #    By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/01 09:54:57 by metalium          #+#    #+#              #
-#    Updated: 2019/10/07 16:26:49 by dbubnov          ###   ########.fr        #
+#    Updated: 2019/10/07 18:31:07 by dbubnov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-
 FRAEMWORKS=-framework OpenGL -framework AppKit
+FLAGS=-Werror -Wextra -Wall
+NAME=fdf
+SRC=src/*.c
+INCLUDES=libft/libft.a minilibx_macos/libmlx.a
 
 all:
-	gcc *.c libft/libft.a minilibx_macos/libmlx.a $(FRAEMWORKS)
-	./a.out test_maps/mars.fdf
+	@make -C libft/ all
+	@make -C minilibx_macos/ all
+	gcc $(SRC) -o $(NAME) $(FLAGS) $(INCLUDES) $(FRAEMWORKS)
 
-push:
-	git add .
-	git status
-	git commit -m fdf
-	git push
+clean:
+	@make -C libft/ clean
+	@make -C minilibx_macos/ clean
 
-debug:
-	gcc -g *.c libft/libft.a minilibx_macos/libmlx.a $(FRAEMWORKS)
+fclean: clean
+	/bin/rm -f $(NAME)
+	@make -C libft/ fclean
+
+re: fclean all

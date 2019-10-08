@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_fgroup.c                                      :+:      :+:    :+:   */
+/*   three_d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 17:37:21 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/10/07 17:42:00 by dbubnov          ###   ########.fr       */
+/*   Created: 2019/10/07 13:22:47 by dbubnov           #+#    #+#             */
+/*   Updated: 2019/10/07 17:43:42 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void init_fgroup(t_fgroup *fgroup)
+void	isometric(float *x, float *y, int z, float rot)
 {
-   	fgroup->zoom = 20;
-	fgroup->move_x = 200;
-	fgroup->move_y = 200;
-	fgroup->rot = 0.8;
-	fgroup->scale_z = 1;
-	fgroup->perspective = 1;
+	*x = (*x - *y) * cos(rot);
+	*y = (*x + *y) * sin(rot) - z;
 }

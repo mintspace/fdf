@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 09:54:50 by metalium          #+#    #+#             */
-/*   Updated: 2019/10/07 17:41:55 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/07 18:52:49 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,20 @@ int	deal_key(int key, t_fgroup *fgroup)
 	return (0);
 }
 
+int		read_file(char *file_name, t_fgroup *fgroup)
+{
+	get_land_height(file_name, fgroup);
+	get_land_width(file_name, fgroup);
+	land_alocate(fgroup);
+	land_fill(file_name, fgroup);
+	return (0);
+}
+
 int		main(int argc, char **argv)
 {
 	t_fgroup	*fgroup;
 
-	// ft_error(argc, argv[1]);
+	ft_error(argc, argv[1]);
 	fgroup = (t_fgroup*)malloc(sizeof(t_fgroup));
 	read_file(argv[1], fgroup);
 	fgroup->mlx_ptr = mlx_init();

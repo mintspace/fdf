@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc.c                                             :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/01 17:53:21 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/10/01 19:38:48 by dbubnov          ###   ########.fr       */
+/*   Created: 2019/10/07 15:42:49 by dbubnov           #+#    #+#             */
+/*   Updated: 2019/10/07 18:33:01 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-float ft_abs(float i)
+void	render(t_fgroup *fgroup)
 {
-	if (i < 0)
-		i *= -1;
-	return (i);
+	int		i;
+	int		j;
+
+	j = 0;
+	mlx_clear_window(fgroup->mlx_ptr, fgroup->win_ptr);
+	while (j < fgroup->land_height)
+	{
+		i = 0;
+		while (i < fgroup->land_width)
+		{
+			if (i < fgroup->land_width - 1)
+				bres_line(i, j, i + 1, j, fgroup);
+			if (j < fgroup->land_height - 1)
+				bres_line(i, j, i, j + 1, fgroup);
+			i++;
+		}
+		j++;
+	}
 }
