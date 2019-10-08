@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 17:53:56 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/10/07 19:00:34 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/07 19:54:20 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		is_fit(int x, int y, t_fgroup *fgroup)
 	return (1);
 }
 
-void bres_line(float x0,  float y0, float x1, float y1, t_fgroup *fgroup)
+void bres_line(float x0, float y0, float x1, float y1, t_fgroup *fgroup)
 {
 	float	d_x;
 	float	d_y;
