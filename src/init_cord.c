@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zoom.c                                             :+:      :+:    :+:   */
+/*   init_cord.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 13:11:36 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/10/09 16:55:55 by dbubnov          ###   ########.fr       */
+/*   Created: 2019/10/09 15:10:03 by dbubnov           #+#    #+#             */
+/*   Updated: 2019/10/09 16:54:37 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	zoom_scale(t_cord *cord, t_fgroup *fgroup)
+void	init_cord(t_cord *cord)
 {
-	cord->x0 *= fgroup->zoom;
-	cord->x1 *= fgroup->zoom;
-	cord->y0 *= fgroup->zoom;
-	cord->y1 *= fgroup->zoom;
+	cord->x0 = 0;
+	cord->x1 = 0;
+	cord->y0 = 0;
+	cord->y1 = 0;
 }

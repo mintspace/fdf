@@ -6,30 +6,51 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 15:42:49 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/10/07 20:21:46 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/09 16:52:10 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+void	cord_x(t_cord *cord)
+{
+	cord->x0++;
+	cord->x1++;
+}
+
+void	cord_y(t_cord *cord)
+{
+	cord->y0++;
+	cord->y1++;
+	cord->x0 = 0;
+	cord->x1 = 0;
+}
+
 void	render(t_fgroup *fgroup)
 {
-	int		i;
-	int		j;
+	t_cord	*cord;
 
-	j = 0;
+	cord = (t_cord*)malloc(sizeof(t_cord));
+	init_cord(cord);
 	mlx_clear_window(fgroup->mlx_ptr, fgroup->win_ptr);
-	while (j < fgroup->land_height)
+	while (cord->y0 < fgroup->land_height)
 	{
-		i = 0;
-		while (i < fgroup->land_width)
+		while (cord->x0 < fgroup->land_width)
 		{
-			if (i < fgroup->land_width - 1)
-				bres_line(i, j, i + 1, j, fgroup);
-			if (j < fgroup->land_height - 1)
-				bres_line(i, j, i, j + 1, fgroup);
-			i++;
+			if (cord->x0 < fgroup->land_width - 1)
+			{
+				cord->x1++;
+				bres_line(*cord, fgroup);
+				cord->x1--;
+			}
+			if (cord->y0 < fgroup->land_height - 1)
+			{
+				cord->y1++;
+				bres_line(*cord, fgroup);
+				cord->y1--;
+			}
+			cord_x(cord);
 		}
-		j++;
+		cord_y(cord);
 	}
 }

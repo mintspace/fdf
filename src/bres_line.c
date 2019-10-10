@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 17:53:56 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/10/07 19:54:20 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/09 17:27:30 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		is_fit(int x, int y, t_fgroup *fgroup)
 	return (1);
 }
 
-void bres_line(float x0, float y0, float x1, float y1, t_fgroup *fgroup)
+void bres_line(t_cord cord, t_fgroup *fgroup)
 {
 	float	d_x;
 	float	d_y;
@@ -31,24 +31,23 @@ void bres_line(float x0, float y0, float x1, float y1, t_fgroup *fgroup)
 	int		z0;
 	int		z1;
 
-	z0 = fgroup->land[(int)y0][(int)x0] * fgroup->scale_z;
-	z1 = fgroup->land[(int)y1][(int)x1] * fgroup->scale_z;
-	fgroup->color = (fgroup->land[(int)y0][(int)x0] != 0) ? 0xff0000 : 0x34e8eb;
-	zoom_scale(&x0, &y0, &x1, &y1, fgroup);
+	z0 = fgroup->land[(int)cord.y0][(int)cord.x0] * fgroup->scale_z;
+	z1 = fgroup->land[(int)cord.y1][(int)cord.x1] * fgroup->scale_z;
+	fgroup->color = (fgroup->land[(int)cord.y0][(int)cord.x0] != 0) ? 0xff0000 : 0x34e8eb;
+	zoom_scale(&cord, fgroup);
 	if (fgroup->perspective == 1)
-	{
-		isometric(&x0, &y0, z0, fgroup->rot);
-		isometric(&x1, &y1, z1, fgroup->rot);
-	}
-	d_x = x1 - x0;
-	d_y = y1 - y0;
+		isometric(&cord.x0, &cord.y0, z0, fgroup->rot);
+	if (fgroup->perspective == 1)
+		isometric(&cord.x1, &cord.y1, z1, fgroup->rot);
+	d_x = cord.x1 - cord.x0;
+	d_y = cord.y1 - cord.y0;
 	step_x = d_x / MAX(ft_abs(d_x), ft_abs(d_y));
 	step_y = d_y / MAX(ft_abs(d_x), ft_abs(d_y));
-	while (((int)(x0 - x1) || (int)(y0 - y1)) && is_fit(x0, y0, fgroup))
+	while (((int)(cord.x0 - cord.x1) || (int)(cord.y0 - cord.y1)) && is_fit(cord.x0, cord.y0, fgroup))
 	{
 		mlx_pixel_put(fgroup->mlx_ptr, fgroup->win_ptr,
-		x0 + fgroup->move_x, y0 + fgroup->move_y, fgroup->color);
-		x0 += step_x;
-		y0 += step_y;
+		cord.x0 + fgroup->move_x, cord.y0 + fgroup->move_y, fgroup->color);
+		cord.x0 += step_x;
+		cord.y0 += step_y;
 	}
 }
