@@ -6,38 +6,30 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 09:54:50 by metalium          #+#    #+#             */
-/*   Updated: 2019/10/09 12:39:02 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/10 12:11:53 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	deal_key(int key, t_fgroup *fgroup)
+int		deal_key(int key, t_fgroup *fgroup)
 {
 	if (key == '5')
-		exit (0);
-	if (key == 126)
-		fgroup->move_y -= 20;
-	if (key == 125)
-		fgroup->move_y += 20;
-	if (key == 123)
-		fgroup->move_x -= 20;
-	if (key == 124)
-		fgroup->move_x += 20;
+		exit(0);
+	fgroup->move_y -= (key == 126) ? 20 : 0;
+	fgroup->move_y += (key == 125) ? 20 : 0;
+	fgroup->move_x -= (key == 123) ? 20 : 0;
+	fgroup->move_x += (key == 124) ? 20 : 0;
+	fgroup->zoom += (key == 69) ? 10 : 0;
+	fgroup->rot += (key == 86) ? 0.05 : 0;
+	fgroup->rot -= (key == 88) ? 0.05 : 0;
 	if (key == 87)
 		fgroup->perspective = (fgroup->perspective == 0) ? 1 : 0;
-	if (key == 69)
-		fgroup->zoom += 10;
-	if (key == 78 && fgroup->zoom > 10)
-		fgroup->zoom -= 10;
+	fgroup->zoom -= (key == 78 && fgroup->zoom > 10) ? 10 : 0;
 	if (key == 91)
 		fgroup->scale_z--;
 	if (key == 84)
 		fgroup->scale_z++;
-	if (key == 86)
-		fgroup->rot += 0.05;
-	if (key == 88)
-		fgroup->rot -= 0.05;
 	render(fgroup);
 	return (0);
 }
