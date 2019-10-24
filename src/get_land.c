@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 17:38:30 by dbubnov           #+#    #+#             */
-/*   Updated: 2019/10/09 15:05:03 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/10 13:57:53 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	get_land_height(char *land, t_fgroup *fgroup)
 		fgroup->land_height++;
 		free(str);
 	}
+	free(str);
 	close(fd);
 }
 
@@ -64,8 +65,12 @@ void	land_fill_str(int land_counter, char *str, t_fgroup *fgroup)
 	while (i < fgroup->land_width)
 	{
 		fgroup->land[land_counter][i] = ft_atoi(nums[i]);
+		free(nums[i]);
 		i++;
 	}
+	while (nums[i])
+		free(nums[i++]);
+	free(nums);
 }
 
 void	land_fill(char *land, t_fgroup *fgroup)

@@ -6,7 +6,7 @@
 /*   By: dbubnov <dbubnov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 09:57:14 by metalium          #+#    #+#             */
-/*   Updated: 2019/10/10 12:17:30 by dbubnov          ###   ########.fr       */
+/*   Updated: 2019/10/10 12:49:19 by dbubnov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define MAX(A, B) (A > B ? A : B)
 # define MIN(A, B) (A > B ? B : A)
 
-typedef struct	s_fgroup
+typedef struct
 {
 	int			zoom;
 	int			color;
@@ -36,18 +36,18 @@ typedef struct	s_fgroup
 	float		rot;
 }				t_fgroup;
 
-typedef struct	s_cord
+typedef struct
 {
-	float	x0;
-	float	y0;
-	float	x1;
-	float	y1;
-	float	step_x;
-	float	step_y;
-	float	d_x;
-	float	d_y;
-	int		z0;
-	int		z1;
+	float		x0;
+	float		y0;
+	float		x1;
+	float		y1;
+	float		step_x;
+	float		step_y;
+	float		d_x;
+	float		d_y;
+	int			z0;
+	int			z1;
 }				t_cord;
 
 float			ft_abs(float i);
@@ -64,6 +64,6 @@ void			bres_line(t_cord cord, t_fgroup *fgroup);
 void			zoom_scale(t_cord *cord, t_fgroup *fgroup);
 void			land_alocate(t_fgroup *fgroup);
 void			land_fill(char *land, t_fgroup *fgroup);
-void			init_cord(t_cord *cord);
+t_cord			init_cord();
 
 #endif
