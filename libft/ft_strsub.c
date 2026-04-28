@@ -15,12 +15,10 @@
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	char	*str;
-	size_t	s_len;
 	size_t	i;
 
 	if (s == NULL)
 		return (NULL);
-	s_len = (len - start) + 1;
 	i = 0;
 	str = (char*)malloc((len) + 1);
 	if (str == NULL)
@@ -33,7 +31,5 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 		len--;
 	}
 	str[i] = '\0';
-	if (str == NULL)
-		return (NULL);
 	return (str);
 }
